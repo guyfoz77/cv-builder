@@ -9,6 +9,29 @@ function App() {
   const [personalDetails, setPersonalDetails] = useState(
     userInputData.personalDetails
   );
+
+  function handlePersonalDetailsChange(e) {
+    const newPersonalDetails = {...personalDetails};
+    switch (e.target.id) {
+      case "name":
+        newPersonalDetails.name = e.target.value;
+        setPersonalDetails(newPersonalDetails);
+        break;
+      case "email":
+        newPersonalDetails.email = e.target.value;
+        setPersonalDetails(newPersonalDetails);
+        break;
+      case "phone":
+        newPersonalDetails.phone = e.target.value;
+        setPersonalDetails(newPersonalDetails);
+        break;
+      case "address":
+        newPersonalDetails.address = e.target.value;
+        setPersonalDetails(newPersonalDetails);
+        break;
+    }
+  }
+
   return (
     <div className="mainContainer">
       <aside className="userInput">
@@ -18,12 +41,12 @@ function App() {
           email={personalDetails.email}
           phone={personalDetails.phone}
           address={personalDetails.address}
+          onPersonalDetailsChange={handlePersonalDetailsChange}
         />
         <div className="education component">{/* todo */}</div>
         <div className="experience component">{/* todo */}</div>
       </aside>
       <main className="CV">
-        <div className="personalDetailsCV">{/* todo */}</div>
         <PersonalDetailsCV
           name={personalDetails.name}
           email={personalDetails.email}
