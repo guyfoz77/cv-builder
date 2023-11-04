@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 export const exampleData = {
   personalDetails: {
     name: "John Johnson",
@@ -13,6 +15,8 @@ export const exampleData = {
       end: "05/2014",
       details:
         "Learned about chemicals etc. Completed a dissertation in particles.",
+      key: uuid(),
+      admin: {editing: false}
     },
     {
       school: "Town Uni",
@@ -21,6 +25,8 @@ export const exampleData = {
       end: "06/2016",
       details:
         "Learned more chemicals. Completed a dissertation in some stuff.",
+      key: uuid(),
+      admin: {editing: false}
     },
     {
       school: "Another Uni",
@@ -29,6 +35,8 @@ export const exampleData = {
       end: "Present",
       details:
         "Made a groundbreaking discovery. Taught some chemistry and stuff",
+      key: uuid(),
+      admin: {editing: false}
     },
   ],
 };

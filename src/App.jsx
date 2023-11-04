@@ -36,6 +36,10 @@ function App() {
     }
   }
 
+  function handleEducationDetailsChange() {
+    // todo
+  }
+
   return (
     <div className="mainContainer">
       <aside className="userInput">
@@ -48,7 +52,7 @@ function App() {
           onPersonalDetailsChange={handlePersonalDetailsChange}
         />
         <div className="education component">
-          <EducationInputContainer education={educationDetails} />
+          <EducationInputContainer education={educationDetails} onEducationDetailsChange={handleEducationDetailsChange} />
         </div>
         <div className="experience component">{/* todo */}</div>
       </aside>
