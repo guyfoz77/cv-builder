@@ -4,14 +4,18 @@ import {
   PersonalDetails,
   PersonalDetailsCV,
 } from "./components/PersonalDetails";
+import { EducationInputContainer } from "./components/Education";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState(
     userInputData.personalDetails
   );
+  const [educationDetails, setEducationDetails] = useState(
+    userInputData.education
+  );
 
   function handlePersonalDetailsChange(e) {
-    const newPersonalDetails = {...personalDetails};
+    const newPersonalDetails = { ...personalDetails };
     switch (e.target.id) {
       case "name":
         newPersonalDetails.name = e.target.value;
@@ -43,7 +47,9 @@ function App() {
           address={personalDetails.address}
           onPersonalDetailsChange={handlePersonalDetailsChange}
         />
-        <div className="education component">{/* todo */}</div>
+        <div className="education component">
+          <EducationInputContainer education={educationDetails} />
+        </div>
         <div className="experience component">{/* todo */}</div>
       </aside>
       <main className="CV">

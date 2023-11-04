@@ -5,6 +5,32 @@ export const exampleData = {
     phone: "+44123456789",
     address: "Nottingham, UK",
   },
+  education: [
+    {
+      school: "City Uni",
+      degree: "BSc in Chemistry",
+      start: "09/2010",
+      end: "05/2014",
+      details:
+        "Learned about chemicals etc. Completed a dissertation in particles.",
+    },
+    {
+      school: "Town Uni",
+      degree: "MSc in Chemistry",
+      start: "09/2014",
+      end: "06/2016",
+      details:
+        "Learned more chemicals. Completed a dissertation in some stuff.",
+    },
+    {
+      school: "Another Uni",
+      degree: "PHd in Condensed matter",
+      start: "09/2016",
+      end: "Present",
+      details:
+        "Made a groundbreaking discovery. Taught some chemistry and stuff",
+    },
+  ],
 };
 
-export let userInputData = {...exampleData};
+export let userInputData = { ...exampleData };

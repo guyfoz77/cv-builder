@@ -1,7 +1,5 @@
-import React from "react";
 
 export function PersonalDetails({ name, email, phone, address, onPersonalDetailsChange}) {
-  console.log('render PersonalDetails')
   return (
     <div className="personalDetails component">
       <h2>Personal Details</h2>
@@ -11,14 +9,13 @@ export function PersonalDetails({ name, email, phone, address, onPersonalDetails
       <input type="email" id="email" defaultValue={email}  onChange={onPersonalDetailsChange} />
       <label htmlFor="phone">Phone number:</label>
       <input type="phone" id="phone" defaultValue={phone}  onChange={onPersonalDetailsChange} />
-      <label htmlFor="address">Address:x</label>
+      <label htmlFor="address">Address:</label>
       <input type="text" id="address" defaultValue={address}  onChange={onPersonalDetailsChange} />
     </div>
   );
 }
 
 export function PersonalDetailsCV({ name, email, phone, address }) {
-  console.log('render PersonalDetailsCv')
   return (
     <div className="personalDetailsCV componentCV">
       <h1>{name}</h1>
