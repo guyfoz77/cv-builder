@@ -7,7 +7,7 @@ export function EducationInputContainer({
     <div className="educationDetails component">
       <h2>Education</h2>
       <div className="educationDetailsContainer hidden">
-        <EducationList education={education} />
+        <EducationList education={education} handleEducationDetailsChange={onEducationDetailsChange}/>
 
         
         <div className="buttons">
@@ -19,14 +19,19 @@ export function EducationInputContainer({
   );
 }
 
-function EducationList({ education }) {
-  function onSchoolClick(school) {
-    console.log(school);
-    school.admin.editing = !school.admin.editing;
+//
+
+function EducationList({ education, handleEducationDetailsChange }) {
+  function handleEducationSchoolClick(keyToEdit) {
+    let newSchoolList = [ ...education ]
+    const indexToEdit = education.findIndex(school => school.key == keyToEdit)
+    newSchoolList[indexToEdit].admin.editing = !newSchoolList[indexToEdit].admin.editing
+    console.log(newSchoolList)
+    handleEducationDetailsChange(newSchoolList)
   }
   return education.map((school) => (
     <>
-      <p key={school.key} onClick={() => onSchoolClick(school)}>
+      <p key={school.key} onClick={() => handleEducationSchoolClick(school.key)}>
         {school.school}
       </p>
       {school.admin.editing && <EducationInputs education={education}/>}

@@ -36,7 +36,10 @@ function App() {
     }
   }
 
-  function handleEducationDetailsChange() {
+  
+
+  function handleEducationDetailsChange(newSchoolList) {
+    setEducationDetails(newSchoolList)
     // todo
   }
 
