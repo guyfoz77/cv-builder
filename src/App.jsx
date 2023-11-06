@@ -4,7 +4,10 @@ import {
   PersonalDetails,
   PersonalDetailsCV,
 } from "./components/PersonalDetails";
-import { EducationInputContainer } from "./components/Education";
+import {
+  EducationInputContainer,
+  EducationDetailsCV,
+} from "./components/Education";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState(
@@ -36,10 +39,8 @@ function App() {
     }
   }
 
-  
-
   function handleEducationDetailsChange(newSchoolList) {
-    setEducationDetails(newSchoolList)
+    setEducationDetails(newSchoolList);
     // todo
   }
 
@@ -55,7 +56,10 @@ function App() {
           onPersonalDetailsChange={handlePersonalDetailsChange}
         />
         <div className="education component">
-          <EducationInputContainer education={educationDetails} onEducationDetailsChange={handleEducationDetailsChange} />
+          <EducationInputContainer
+            education={educationDetails}
+            onEducationDetailsChange={handleEducationDetailsChange}
+          />
         </div>
         <div className="experience component">{/* todo */}</div>
       </aside>
@@ -66,7 +70,10 @@ function App() {
           phone={personalDetails.phone}
           address={personalDetails.address}
         />
-        <div className="educationCV">{/* todo */}</div>
+        <div className="educationCV">
+          <h3>Education</h3>
+          <EducationDetailsCV education={educationDetails}/>
+        </div>
         <div className="professionalExperienceCV">{/* todo */}</div>
       </main>
     </div>

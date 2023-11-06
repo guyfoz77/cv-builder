@@ -2,14 +2,15 @@ export function EducationInputContainer({
   education,
   onEducationDetailsChange,
 }) {
-  
   return (
     <div className="educationDetails component">
       <h2>Education</h2>
       <div className="educationDetailsContainer hidden">
-        <EducationList education={education} handleEducationDetailsChange={onEducationDetailsChange}/>
+        <EducationList
+          education={education}
+          handleEducationDetailsChange={onEducationDetailsChange}
+        />
 
-        
         <div className="buttons">
           <button>Cancel</button>
           <button>Save</button>
@@ -23,19 +24,22 @@ export function EducationInputContainer({
 
 function EducationList({ education, handleEducationDetailsChange }) {
   function handleEducationSchoolClick(keyToEdit) {
-    let newSchoolList = [ ...education ]
-    const indexToEdit = education.findIndex(school => school.key == keyToEdit)
-    newSchoolList[indexToEdit].admin.editing = !newSchoolList[indexToEdit].admin.editing
-    console.log(newSchoolList)
-    handleEducationDetailsChange(newSchoolList)
+    let newSchoolList = [...education];
+    const indexToEdit = education.findIndex(
+      (school) => school.key == keyToEdit
+    );
+    newSchoolList[indexToEdit].admin.editing =
+      !newSchoolList[indexToEdit].admin.editing;
+    handleEducationDetailsChange(newSchoolList);
   }
   return education.map((school) => (
-    <>
-      <p key={school.key} onClick={() => handleEducationSchoolClick(school.key)}>
-        {school.school}
-      </p>
-      {school.admin.editing && <EducationInputs education={education}/>}
-    </>
+    <div
+      key={school.key}
+      onClick={() => handleEducationSchoolClick(school.key)}
+    >
+      <p>{school.school}</p>
+      {school.admin.editing && <EducationInputs education={education} />}
+    </div>
   ));
 }
 
@@ -77,6 +81,30 @@ function EducationInputs({ education, onEducationDetailsChange }) {
         defaultValue={education.detials}
         onChange={onEducationDetailsChange}
       />
+    </div>
+  );
+}
+
+//this returns a list of SchoolDetails for the CV
+export function EducationDetailsCV({ education }) {
+  return <div className="educationListCV">
+    {education.map(school => (<SchoolDetailsCV key={school.key} school={school} />))}
+  </div>;
+}
+
+//This function returns a single schooldetails element for the list in the CV
+function SchoolDetailsCV({ school }) {
+  if (!school.admin.displayOnCV) return
+  return (
+    <div className="schoolCV" key={school.key}>
+      <p className="schoolName">
+        <b>{school.school}</b>
+      </p>
+      <p className="schoolDateRange">
+        {school.start} - {school.end}
+      </p>
+      <p>{school.degree}</p>
+      <p>{school.details}</p>
     </div>
   );
 }

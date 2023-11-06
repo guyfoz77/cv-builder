@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
 export const exampleData = {
   personalDetails: {
@@ -16,7 +16,7 @@ export const exampleData = {
       details:
         "Learned about chemicals etc. Completed a dissertation in particles.",
       key: uuid(),
-      admin: {editing: false}
+      admin: { editing: false, displayOnCV: true },
     },
     {
       school: "Town Uni",
@@ -26,7 +26,7 @@ export const exampleData = {
       details:
         "Learned more chemicals. Completed a dissertation in some stuff.",
       key: uuid(),
-      admin: {editing: false}
+      admin: { editing: false, displayOnCV: true },
     },
     {
       school: "Another Uni",
@@ -36,7 +36,7 @@ export const exampleData = {
       details:
         "Made a groundbreaking discovery. Taught some chemistry and stuff",
       key: uuid(),
-      admin: {editing: false}
+      admin: { editing: false, displayOnCV: true },
     },
   ],
 };
