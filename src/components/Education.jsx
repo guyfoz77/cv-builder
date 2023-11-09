@@ -2,29 +2,19 @@ import { userInputData } from "../data";
 
 export function EducationInputContainer({
   education,
-  onEducationDetailsChange,
+  handleEducationDetailsChange,
 }) {
-  return (
-    <div className="educationDetails component">
-      <h2>Education</h2>
-      <div className="educationDetailsContainer hidden">
-        <EducationList
-          education={education}
-          handleEducationDetailsChange={onEducationDetailsChange}
-        />
 
-        <div className="buttons">
-          <button>Cancel</button>
-          <button>Save</button>
-        </div>
-      </div>
-    </div>
-  );
-}
+  function handleEducationSchoolClick(keyToEdit) {
+    let newSchoolList = [...education];
+    const indexToEdit = education.findIndex(
+      (school) => school.key == keyToEdit
+    );
+    newSchoolList[indexToEdit].admin.editing =
+      !newSchoolList[indexToEdit].admin.editing;
+    handleEducationDetailsChange(newSchoolList);
+  }
 
-//
-
-function EducationList({ education, handleEducationDetailsChange }) {
   function onEducationDetailsChange(e, keyToEdit) {
     let newSchoolList = [...userInputData.education];
     const indexToEdit = userInputData.education.findIndex(
@@ -52,18 +42,31 @@ function EducationList({ education, handleEducationDetailsChange }) {
     handleEducationDetailsChange(newSchoolList);
   }
 
-  function handleEducationSchoolClick(keyToEdit) {
-    let newSchoolList = [...education];
-    const indexToEdit = education.findIndex(
-      (school) => school.key == keyToEdit
-    );
-    newSchoolList[indexToEdit].admin.editing =
-      !newSchoolList[indexToEdit].admin.editing;
-    handleEducationDetailsChange(newSchoolList);
-  }
+  return (
+    <div className="educationDetails component">
+      <h2>Education</h2>
+      <div className="educationDetailsContainer hidden">
+        <EducationList
+          education={education}
+          onEducationDetailsChange={onEducationDetailsChange}
+          onEducationSchoolClick={handleEducationSchoolClick}
+        />
+        <div className="buttons">
+          <button>Cancel</button>
+          <button>Save</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+//
+
+function EducationList({ education, onEducationDetailsChange, onEducationSchoolClick }) {
+  
   return education.map((school) => (
     <div key={school.key}>
-      <h3 onClick={() => handleEducationSchoolClick(school.key)}>
+      <h3 onClick={() => onEducationSchoolClick(school.key)}>
         {school.school}
       </h3>
       {school.admin.editing && <EducationInputs onEducationDetailsChange={(e) => onEducationDetailsChange(e, school.key)} school={school} />}

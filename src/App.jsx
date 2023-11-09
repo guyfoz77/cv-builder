@@ -58,7 +58,7 @@ function App() {
         <div className="education component">
           <EducationInputContainer
             education={educationDetails}
-            onEducationDetailsChange={handleEducationDetailsChange}
+            handleEducationDetailsChange={handleEducationDetailsChange}
           />
         </div>
         <div className="experience component">{/* todo */}</div>
