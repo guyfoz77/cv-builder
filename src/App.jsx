@@ -1,47 +1,59 @@
-import { useState } from 'react';
-import { userInputData } from './data';
+import { useState } from 'react'
+import { userInputData } from './data'
 import {
   PersonalDetails,
   PersonalDetailsCV,
-} from './components/PersonalDetails';
+} from './components/PersonalDetails'
 import {
   EducationInputContainer,
   EducationDetailsCV,
-} from './components/Education';
+} from './components/Education'
+
+import { ExperienceInputContainer } from './components/Experience'
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState(
     userInputData.personalDetails
-  );
+  )
   const [educationDetails, setEducationDetails] = useState(
     userInputData.education
-  );
+  )
+  const [experienceDetails, setExperienceDetails] = useState(
+    userInputData.experience
+  )
 
   function handlePersonalDetailsChange(e) {
-    const newPersonalDetails = { ...personalDetails };
+    const newPersonalDetails = { ...personalDetails }
     switch (e.target.id) {
       case 'name':
-        newPersonalDetails.name = e.target.value;
-        setPersonalDetails(newPersonalDetails);
-        break;
+        newPersonalDetails.name = e.target.value
+        setPersonalDetails(newPersonalDetails)
+        break
       case 'email':
-        newPersonalDetails.email = e.target.value;
-        setPersonalDetails(newPersonalDetails);
-        break;
+        newPersonalDetails.email = e.target.value
+        setPersonalDetails(newPersonalDetails)
+        break
       case 'phone':
-        newPersonalDetails.phone = e.target.value;
-        setPersonalDetails(newPersonalDetails);
-        break;
+        newPersonalDetails.phone = e.target.value
+        setPersonalDetails(newPersonalDetails)
+        break
       case 'address':
-        newPersonalDetails.address = e.target.value;
-        setPersonalDetails(newPersonalDetails);
-        break;
+        newPersonalDetails.address = e.target.value
+        setPersonalDetails(newPersonalDetails)
+        break
     }
   }
 
   function handleEducationDetailsChange(newSchoolList) {
-    setEducationDetails(newSchoolList);
-    userInputData.education = newSchoolList;
+    //replaces the storage array and the educationalDetails state with NewSchoolList.
+    setEducationDetails(newSchoolList)
+    userInputData.education = newSchoolList
+  }
+
+  function handleExperienceDetailsChange(newExperienceList) {
+    //replaces the storage array and the experienceDetails state with newExperienceList.
+    setExperienceDetails(newExperienceList)
+    userInputData.experience(newExperienceList)
   }
 
   return (
@@ -61,7 +73,12 @@ function App() {
             handleEducationDetailsChange={handleEducationDetailsChange}
           />
         </div>
-        <div className='experience component'>{/* todo */}</div>
+        <div className='experience component'>
+          <ExperienceInputContainer
+            experience={experienceDetails}
+            handleExperienceDetailsChange={handleExperienceDetailsChange}
+          />
+        </div>
       </aside>
       <main className='CV'>
         <PersonalDetailsCV
@@ -77,7 +94,7 @@ function App() {
         <div className='professionalExperienceCV'>{/* todo */}</div>
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

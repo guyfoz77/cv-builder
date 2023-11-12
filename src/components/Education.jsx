@@ -1,68 +1,66 @@
-import { userInputData, newSchoolTemplate } from '../data';
+import { userInputData, newSchoolTemplate } from '../data'
 // import { useState } from 'react';
 
 export function EducationInputContainer({
   education,
   handleEducationDetailsChange,
 }) {
-  let newSchoolList = [...education];
+  let newSchoolList = [...education]
 
   function handleEducationSchoolClick(keyToEdit) {
-    const indexToEdit = education.findIndex(
-      (school) => school.key == keyToEdit
-    );
+    const indexToEdit = education.findIndex((school) => school.key == keyToEdit)
     newSchoolList[indexToEdit].admin.editing =
-      !newSchoolList[indexToEdit].admin.editing;
-    handleEducationDetailsChange(newSchoolList);
+      !newSchoolList[indexToEdit].admin.editing
+    handleEducationDetailsChange(newSchoolList)
   }
   function onEducationDetailsChange(e, keyToEdit) {
     const indexToEdit = userInputData.education.findIndex(
       (school) => keyToEdit == school.key
-    );
-    let editedSchool = { ...newSchoolList[indexToEdit] };
+    )
+    let editedSchool = { ...newSchoolList[indexToEdit] }
     switch (e.target.id) {
       case 'school':
-        editedSchool.school = e.target.value;
-        break;
+        editedSchool.school = e.target.value
+        break
       case 'degree':
-        editedSchool.degree = e.target.value;
-        break;
+        editedSchool.degree = e.target.value
+        break
       case 'start':
-        editedSchool.start = e.target.value;
-        break;
+        editedSchool.start = e.target.value
+        break
       case 'end':
-        editedSchool.end = e.target.value;
-        break;
+        editedSchool.end = e.target.value
+        break
       case 'details':
-        editedSchool.details = e.target.value;
-        break;
+        editedSchool.details = e.target.value
+        break
     }
-    newSchoolList[indexToEdit] = editedSchool;
-    handleEducationDetailsChange(newSchoolList);
+    newSchoolList[indexToEdit] = editedSchool
+    handleEducationDetailsChange(newSchoolList)
   }
   function addNewSchool() {
-    newSchoolList.push(newSchoolTemplate);
-    handleEducationDetailsChange(newSchoolList);
+    newSchoolList.push(newSchoolTemplate)
+    handleEducationDetailsChange(newSchoolList)
   }
   function onEducationSchoolDelete(keyToDelete) {
     const newSchoolListDeleted = newSchoolList.filter(
       (school) => school.key !== keyToDelete
-    );
-    handleEducationDetailsChange(newSchoolListDeleted);
+    )
+    handleEducationDetailsChange(newSchoolListDeleted)
   }
   function onEducationSchoolShowHide(keyToToggle) {
     const indexToEdit = newSchoolList.findIndex(
       (school) => keyToToggle == school.key
-    );
+    )
     newSchoolList[indexToEdit].admin.displayOnCV =
-      !newSchoolList[indexToEdit].admin.displayOnCV;
-    handleEducationDetailsChange(newSchoolList);
+      !newSchoolList[indexToEdit].admin.displayOnCV
+    handleEducationDetailsChange(newSchoolList)
   }
 
   return (
-    <div className='educationDetails component'>
+    <>
       <h2>Education</h2>
-      <div className='educationDetailsContainer hidden'>
+      <div className='educationDetailsContainer'>
         <EducationList
           education={education}
           onEducationDetailsChange={onEducationDetailsChange}
@@ -74,8 +72,8 @@ export function EducationInputContainer({
           <button onClick={addNewSchool}>New</button>
         </div>
       </div>
-    </div>
-  );
+    </>
+  )
 }
 
 //
@@ -120,11 +118,11 @@ function EducationList({
         />
       )}
     </div>
-  ));
+  ))
 }
 
 function EducationInputs({ school, onEducationDetailsChange }) {
-  let schoolUpdate = { ...school };
+  let schoolUpdate = { ...school }
 
   return (
     <div className='educationDetailsInputsContainer'>
@@ -165,7 +163,7 @@ function EducationInputs({ school, onEducationDetailsChange }) {
         onChange={onEducationDetailsChange}
       />
     </div>
-  );
+  )
 }
 
 //this returns a list of SchoolDetails for the CV
@@ -176,12 +174,12 @@ export function EducationDetailsCV({ education }) {
         <SchoolDetailsCV key={school.key} school={school} />
       ))}
     </div>
-  );
+  )
 }
 
 //This function returns a single schooldetails element for the list in the CV
 function SchoolDetailsCV({ school }) {
-  if (!school.admin.displayOnCV) return;
+  if (!school.admin.displayOnCV) return
   return (
     <div className='schoolCV' key={school.key}>
       <p className='schoolName'>
@@ -193,5 +191,5 @@ function SchoolDetailsCV({ school }) {
       <p>{school.degree}</p>
       <p>{school.details}</p>
     </div>
-  );
+  )
 }
