@@ -41,7 +41,6 @@ function App() {
 
   function handleEducationDetailsChange(newSchoolList) {
     setEducationDetails(newSchoolList);
-    // todo
   }
 
   return (
@@ -72,7 +71,7 @@ function App() {
         />
         <div className="educationCV">
           <h3>Education</h3>
-          <EducationDetailsCV education={educationDetails}/>
+          <EducationDetailsCV education={educationDetails} />
         </div>
         <div className="professionalExperienceCV">{/* todo */}</div>
       </main>

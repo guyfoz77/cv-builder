@@ -1,12 +1,16 @@
 import { userInputData } from "../data";
+import { useState } from "react";
+
 
 export function EducationInputContainer({
   education,
   handleEducationDetailsChange,
 }) {
+  let newSchoolList = [...education]
+
+  const [newSchoolActive, setNewSchoolActive] = useState(false)
 
   function handleEducationSchoolClick(keyToEdit) {
-    let newSchoolList = [...education];
     const indexToEdit = education.findIndex(
       (school) => school.key == keyToEdit
     );
@@ -14,9 +18,8 @@ export function EducationInputContainer({
       !newSchoolList[indexToEdit].admin.editing;
     handleEducationDetailsChange(newSchoolList);
   }
-
   function onEducationDetailsChange(e, keyToEdit) {
-    let newSchoolList = [...userInputData.education];
+  
     const indexToEdit = userInputData.education.findIndex(
       (school) => keyToEdit == school.key
     );
@@ -51,8 +54,9 @@ export function EducationInputContainer({
           onEducationDetailsChange={onEducationDetailsChange}
           onEducationSchoolClick={handleEducationSchoolClick}
         />
+        {newSchoolActive && <EducationInputs newSchool={true}/>}
         <div className="buttons">
-          <button>Cancel</button>
+          <button onClick={() => setNewSchoolActive(!newSchoolActive)}>New</button>
           <button>Save</button>
         </div>
       </div>
@@ -63,18 +67,23 @@ export function EducationInputContainer({
 //
 
 function EducationList({ education, onEducationDetailsChange, onEducationSchoolClick }) {
-  
+  console.log(education)
   return education.map((school) => (
     <div key={school.key}>
       <h3 onClick={() => onEducationSchoolClick(school.key)}>
         {school.school}
       </h3>
-      {school.admin.editing && <EducationInputs onEducationDetailsChange={(e) => onEducationDetailsChange(e, school.key)} school={school} />}
+      {school.admin.editing && <EducationInputs onEducationDetailsChange={(e) => onEducationDetailsChange(e, school.key)} school={school} newSchool={false} />}
     </div>
   ));
 }
 
-function EducationInputs({ school, onEducationDetailsChange }) {
+function EducationInputs({ school, onEducationDetailsChange, newSchool }) {
+
+  if (newSchool == true) {
+
+  }
+  //some logic here to add a new school maybe to the list then set some default values.
   
   return (
     <div className="educationDetailsInputsContainer">

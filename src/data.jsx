@@ -41,4 +41,15 @@ export const exampleData = {
   ],
 };
 
+export const newSchoolTemplate = {
+    school: "",
+    degree: "",
+    start: "",
+    end: "",
+    details:
+      "",
+    key: uuid(),
+    admin: { editing: false, displayOnCV: true },
+  }
+
 export let userInputData = { ...exampleData };
