@@ -38,10 +38,6 @@ export function EducationInputContainer({
     newSchoolList[indexToEdit] = editedSchool
     handleEducationDetailsChange(newSchoolList)
   }
-  function addNewSchool() {
-    newSchoolList.push(newSchoolTemplate)
-    handleEducationDetailsChange(newSchoolList)
-  }
   function onEducationSchoolDelete(keyToDelete) {
     const newSchoolListDeleted = newSchoolList.filter(
       (school) => school.key !== keyToDelete
@@ -54,6 +50,10 @@ export function EducationInputContainer({
     )
     newSchoolList[indexToEdit].admin.displayOnCV =
       !newSchoolList[indexToEdit].admin.displayOnCV
+    handleEducationDetailsChange(newSchoolList)
+  }
+  function addNewSchool() {
+    newSchoolList.push(newSchoolTemplate)
     handleEducationDetailsChange(newSchoolList)
   }
 
@@ -114,7 +114,6 @@ function EducationList({
             onEducationDetailsChange(e, school.key)
           }
           school={school}
-          newSchool={false}
         />
       )}
     </div>
