@@ -48,7 +48,7 @@ export const newSchoolTemplate = {
   end: '',
   details: '',
   key: uuid(),
-  admin: { editing: false, displayOnCV: true },
+  admin: { editing: true, displayOnCV: true },
 };
 
 export let userInputData = { ...exampleData };

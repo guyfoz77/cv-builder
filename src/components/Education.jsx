@@ -50,6 +50,14 @@ export function EducationInputContainer({
     );
     handleEducationDetailsChange(newSchoolListDeleted);
   }
+  function onEducationSchoolShowHide(keyToToggle) {
+    const indexToEdit = newSchoolList.findIndex(
+      (school) => keyToToggle == school.key
+    );
+    newSchoolList[indexToEdit].admin.displayOnCV =
+      !newSchoolList[indexToEdit].admin.displayOnCV;
+    handleEducationDetailsChange(newSchoolList);
+  }
 
   return (
     <div className='educationDetails component'>
@@ -60,6 +68,7 @@ export function EducationInputContainer({
           onEducationDetailsChange={onEducationDetailsChange}
           onEducationSchoolClick={handleEducationSchoolClick}
           onEducationSchoolDelete={onEducationSchoolDelete}
+          onEducationSchoolShowHide={onEducationSchoolShowHide}
         />
         <div className='buttons'>
           <button onClick={addNewSchool}>New</button>
@@ -76,6 +85,7 @@ function EducationList({
   onEducationDetailsChange,
   onEducationSchoolClick,
   onEducationSchoolDelete,
+  onEducationSchoolShowHide,
 }) {
   return education.map((school) => (
     <div key={school.key}>
@@ -88,11 +98,14 @@ function EducationList({
       >
         Delete
       </span>
-      <span className='material-symbols-sharp displayChevron'>
-        {school.admin.display ? 'visibility' : 'visibility_off'}
+      <span
+        className='material-symbols-sharp display'
+        onClick={() => onEducationSchoolShowHide(school.key)}
+      >
+        {school.admin.displayOnCV ? 'visibility' : 'visibility_off'}
       </span>
       <span
-        className='material-symbols-sharp displayChevron'
+        className='material-symbols-sharp chevron'
         onClick={() => onEducationSchoolClick(school.key)}
       >
         {school.admin.editing ? 'expand_more' : 'expand_less'}
