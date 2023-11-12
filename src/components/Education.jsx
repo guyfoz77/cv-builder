@@ -82,6 +82,15 @@ function EducationList({
       <h3 onClick={() => onEducationSchoolClick(school.key)}>
         {school.school || 'Name me!'}
       </h3>
+      <span
+        className='material-symbols-sharp delete'
+        onClick={() => onEducationSchoolDelete(school.key)}
+      >
+        Delete
+      </span>
+      <span className='material-symbols-sharp displayChevron'>
+        {school.admin.editing ? 'expand_more' : 'expand_less'}
+      </span>
       {school.admin.editing && (
         <EducationInputs
           onEducationDetailsChange={(e) =>
@@ -91,12 +100,6 @@ function EducationList({
           newSchool={false}
         />
       )}
-      <span
-        className='material-symbols-sharp delete'
-        onClick={() => onEducationSchoolDelete(school.key)}
-      >
-        Delete
-      </span>
     </div>
   ));
 }
