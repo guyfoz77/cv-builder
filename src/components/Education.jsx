@@ -34,7 +34,7 @@ export function EducationInputContainer({
         editedSchool.end = e.target.value;
         break;
       case 'details':
-        editedSchool.end = e.target.value;
+        editedSchool.details = e.target.value;
         break;
     }
     newSchoolList[indexToEdit] = editedSchool;
@@ -89,6 +89,12 @@ function EducationList({
         Delete
       </span>
       <span className='material-symbols-sharp displayChevron'>
+        {school.admin.display ? 'visibility' : 'visibility_off'}
+      </span>
+      <span
+        className='material-symbols-sharp displayChevron'
+        onClick={() => onEducationSchoolClick(school.key)}
+      >
         {school.admin.editing ? 'expand_more' : 'expand_less'}
       </span>
       {school.admin.editing && (
