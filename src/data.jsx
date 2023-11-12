@@ -91,4 +91,29 @@ export const newSchoolTemplate = {
   admin: { editing: true, displayOnCV: true },
 };
 
+export const newCompanyTemplate = {
+  company: 'New company',
+  companyKey: uuid(),
+  admin: { editing: true, displayOnCV: true },
+  positions: [
+    {
+      position: '',
+      start: '',
+      end: '',
+      details: '',
+      positionKey: uuid(),
+      admin: { editing: false, displayOnCV: true },
+    },
+  ],
+};
+
+export const newPositionTemplate = {
+  position: 'New position',
+  start: '',
+  end: '',
+  details: '',
+  positionKey: uuid(),
+  admin: { editing: false, displayOnCV: true },
+};
+
 export let userInputData = { ...exampleData };

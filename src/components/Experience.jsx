@@ -1,1 +1,5 @@
-import { userInputData, newJobTemplate } from '../data';
+import {
+  userInputData,
+  newCompanyTemplate,
+  newPositionTemplate,
+} from '../data';
