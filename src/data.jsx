@@ -39,6 +39,46 @@ export const exampleData = {
       admin: { editing: false, displayOnCV: true },
     },
   ],
+  experience: [
+    {
+      company: 'Chemical labs',
+      companyKey: uuid(),
+      admin: { editing: false, displayOnCV: true },
+      positions: [
+        {
+          position: 'Lab tech',
+          start: '10/2020',
+          end: '11/2022',
+          details: 'Mixed up some chemicals for the researchers.',
+          positionKey: uuid(),
+          admin: { editing: false, displayOnCV: true },
+        },
+      ],
+    },
+    {
+      company: 'Bohr labs',
+      companyKey: uuid(),
+      admin: { editing: false, displayOnCV: true },
+      positions: [
+        {
+          position: 'Lab tech',
+          start: '11/2022',
+          end: '01/2023',
+          details: 'Mixed up some chemicals for the researchers. Made tea.',
+          positionKey: uuid(),
+          admin: { editing: false, displayOnCV: true },
+        },
+        {
+          position: 'Reasearcher',
+          start: '01/2023',
+          end: 'Present',
+          details: 'Made a couple of groundbreaking discoveries.',
+          positionKey: uuid(),
+          admin: { editing: false, displayOnCV: true },
+        },
+      ],
+    },
+  ],
 };
 
 export const newSchoolTemplate = {
