@@ -18,6 +18,7 @@ export function ExperienceInputContainer({
     }
     newCompanyList[indexToEdit] = editedCompany
     handleExperienceDetailsChange(newCompanyList)
+    console.log(newCompanyList)
   }
   function onExperienceCompanyClick(keyToEdit) {
     const indexToEdit = experience.findIndex(
@@ -98,9 +99,7 @@ function ExperienceList({
       </span>
       {company.admin.editing && (
         <CompanyInputs
-          onExperienceDetailsChange={(e) =>
-            onExperienceDetailsChange(e, company.companyKey)
-          }
+          onExperienceDetailsChange={onExperienceDetailsChange}
           company={company}
         />
       )}
@@ -118,11 +117,21 @@ function CompanyInputs({ company, onExperienceDetailsChange }) {
         defaultValue={company.company}
         onChange={(e) => onExperienceDetailsChange(e, company.companyKey)}
       />
-      <PositionList positions={company.positions} />
+      <PositionList
+        positions={company.positions}
+        companyKey={company.companyKey}
+      />
     </div>
   )
 }
 
-function PositionList({ positions }) {
-  return <p>test</p>
+function PositionList({ positions, companyKey }) {
+  //Next time, you need to add the same buttons to each of these divs as in the company list
+  //You need to make a function to handle the editing of a position
+
+  return positions.map((position) => (
+    <div key={position.positionKey}>
+      <h4>{position.position}</h4>
+    </div>
+  ))
 }
