@@ -1,14 +1,11 @@
-import { userInputData } from "../data";
-import { useState } from "react";
-
+import { userInputData, newSchoolTemplate } from '../data';
+import { useState } from 'react';
 
 export function EducationInputContainer({
   education,
   handleEducationDetailsChange,
 }) {
-  let newSchoolList = [...education]
-
-  const [newSchoolActive, setNewSchoolActive] = useState(false)
+  let newSchoolList = [...education];
 
   function handleEducationSchoolClick(keyToEdit) {
     const indexToEdit = education.findIndex(
@@ -19,45 +16,46 @@ export function EducationInputContainer({
     handleEducationDetailsChange(newSchoolList);
   }
   function onEducationDetailsChange(e, keyToEdit) {
-  
     const indexToEdit = userInputData.education.findIndex(
       (school) => keyToEdit == school.key
     );
     let editedSchool = { ...newSchoolList[indexToEdit] };
     switch (e.target.id) {
-      case "school":
+      case 'school':
         editedSchool.school = e.target.value;
         break;
-      case "degree":
+      case 'degree':
         editedSchool.degree = e.target.value;
         break;
-      case "start":
+      case 'start':
         editedSchool.start = e.target.value;
         break;
-      case "end":
+      case 'end':
         editedSchool.end = e.target.value;
         break;
-      case "details":
+      case 'details':
         editedSchool.end = e.target.value;
         break;
     }
     newSchoolList[indexToEdit] = editedSchool;
     handleEducationDetailsChange(newSchoolList);
   }
+  function addNewSchool() {
+    newSchoolList.push(newSchoolTemplate);
+    handleEducationDetailsChange(newSchoolList);
+  }
 
   return (
-    <div className="educationDetails component">
+    <div className='educationDetails component'>
       <h2>Education</h2>
-      <div className="educationDetailsContainer hidden">
+      <div className='educationDetailsContainer hidden'>
         <EducationList
           education={education}
           onEducationDetailsChange={onEducationDetailsChange}
           onEducationSchoolClick={handleEducationSchoolClick}
         />
-        {newSchoolActive && <EducationInputs newSchool={true}/>}
-        <div className="buttons">
-          <button onClick={() => setNewSchoolActive(!newSchoolActive)}>New</button>
-          <button>Save</button>
+        <div className='buttons'>
+          <button onClick={addNewSchool}>New</button>
         </div>
       </div>
     </div>
@@ -66,61 +64,68 @@ export function EducationInputContainer({
 
 //
 
-function EducationList({ education, onEducationDetailsChange, onEducationSchoolClick }) {
-  console.log(education)
+function EducationList({
+  education,
+  onEducationDetailsChange,
+  onEducationSchoolClick,
+}) {
   return education.map((school) => (
     <div key={school.key}>
       <h3 onClick={() => onEducationSchoolClick(school.key)}>
-        {school.school}
+        {school.school || 'Name me!'}
       </h3>
-      {school.admin.editing && <EducationInputs onEducationDetailsChange={(e) => onEducationDetailsChange(e, school.key)} school={school} newSchool={false} />}
+      {school.admin.editing && (
+        <EducationInputs
+          onEducationDetailsChange={(e) =>
+            onEducationDetailsChange(e, school.key)
+          }
+          school={school}
+          newSchool={false}
+        />
+      )}
     </div>
   ));
 }
 
-function EducationInputs({ school, onEducationDetailsChange, newSchool }) {
+function EducationInputs({ school, onEducationDetailsChange }) {
+  let schoolUpdate = { ...school };
 
-  if (newSchool == true) {
-
-  }
-  //some logic here to add a new school maybe to the list then set some default values.
-  
   return (
-    <div className="educationDetailsInputsContainer">
-      <label htmlFor="school">School:</label>
+    <div className='educationDetailsInputsContainer'>
+      <label htmlFor='school'>School:</label>
       <input
-        type="text"
-        id="school"
-        defaultValue={school.school}
+        type='text'
+        id='school'
+        defaultValue={schoolUpdate.school}
         onChange={onEducationDetailsChange}
       />
-      <label htmlFor="degree">Degree:</label>
+      <label htmlFor='degree'>Degree:</label>
       <input
-        type="text"
-        id="degree"
-        defaultValue={school.degree}
+        type='text'
+        id='degree'
+        defaultValue={schoolUpdate.degree}
         onChange={onEducationDetailsChange}
       />
-      <label htmlFor="start">Start Date:</label>
+      <label htmlFor='start'>Start Date:</label>
       <input
-        type="text"
-        id="start"
-        defaultValue={school.start}
+        type='text'
+        id='start'
+        defaultValue={schoolUpdate.start}
         onChange={onEducationDetailsChange}
       />
-      <label htmlFor="end">End Date:</label>
+      <label htmlFor='end'>End Date:</label>
       <input
-        type="text"
-        id="end"
-        defaultValue={school.end}
+        type='text'
+        id='end'
+        defaultValue={schoolUpdate.end}
         onChange={onEducationDetailsChange}
       />
-      <label htmlFor="details">Details:</label>
+      <label htmlFor='details'>Details:</label>
       <textarea
         rows={5}
-        type="text"
-        id="details"
-        defaultValue={school.details}
+        type='text'
+        id='details'
+        defaultValue={schoolUpdate.details}
         onChange={onEducationDetailsChange}
       />
     </div>
@@ -130,7 +135,7 @@ function EducationInputs({ school, onEducationDetailsChange, newSchool }) {
 //this returns a list of SchoolDetails for the CV
 export function EducationDetailsCV({ education }) {
   return (
-    <div className="educationListCV">
+    <div className='educationListCV'>
       {education.map((school) => (
         <SchoolDetailsCV key={school.key} school={school} />
       ))}
@@ -142,11 +147,11 @@ export function EducationDetailsCV({ education }) {
 function SchoolDetailsCV({ school }) {
   if (!school.admin.displayOnCV) return;
   return (
-    <div className="schoolCV" key={school.key}>
-      <p className="schoolName">
+    <div className='schoolCV' key={school.key}>
+      <p className='schoolName'>
         <b>{school.school}</b>
       </p>
-      <p className="schoolDateRange">
+      <p className='schoolDateRange'>
         {school.start} - {school.end}
       </p>
       <p>{school.degree}</p>
