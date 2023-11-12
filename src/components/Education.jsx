@@ -1,5 +1,5 @@
 import { userInputData, newSchoolTemplate } from '../data';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export function EducationInputContainer({
   education,
@@ -44,6 +44,12 @@ export function EducationInputContainer({
     newSchoolList.push(newSchoolTemplate);
     handleEducationDetailsChange(newSchoolList);
   }
+  function onEducationSchoolDelete(keyToDelete) {
+    const newSchoolListDeleted = newSchoolList.filter(
+      (school) => school.key !== keyToDelete
+    );
+    handleEducationDetailsChange(newSchoolListDeleted);
+  }
 
   return (
     <div className='educationDetails component'>
@@ -53,6 +59,7 @@ export function EducationInputContainer({
           education={education}
           onEducationDetailsChange={onEducationDetailsChange}
           onEducationSchoolClick={handleEducationSchoolClick}
+          onEducationSchoolDelete={onEducationSchoolDelete}
         />
         <div className='buttons'>
           <button onClick={addNewSchool}>New</button>
@@ -68,6 +75,7 @@ function EducationList({
   education,
   onEducationDetailsChange,
   onEducationSchoolClick,
+  onEducationSchoolDelete,
 }) {
   return education.map((school) => (
     <div key={school.key}>
@@ -83,6 +91,12 @@ function EducationList({
           newSchool={false}
         />
       )}
+      <span
+        className='material-symbols-sharp delete'
+        onClick={() => onEducationSchoolDelete(school.key)}
+      >
+        Delete
+      </span>
     </div>
   ));
 }
