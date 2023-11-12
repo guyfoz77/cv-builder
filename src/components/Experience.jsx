@@ -2,22 +2,49 @@ import { userInputData, newCompanyTemplate, newPositionTemplate } from '../data'
 
 export function ExperienceInputContainer({
   experience,
-  handleExperienceChange,
+  handleExperienceDetailsChange,
 }) {
-  function onExperienceDetailsChange(keyToEdit) {
-    //todo
+  let newCompanyList = [...experience]
+
+  function onExperienceDetailsChange(e, keyToEdit) {
+    const indexToEdit = userInputData.experience.findIndex(
+      (company) => keyToEdit == company.companyKey
+    )
+    let editedCompany = { ...newCompanyList[indexToEdit] }
+    switch (e.target.id) {
+      case 'company':
+        editedCompany.company = e.target.value
+        break
+    }
+    newCompanyList[indexToEdit] = editedCompany
+    handleExperienceDetailsChange(newCompanyList)
   }
   function onExperienceCompanyClick(keyToEdit) {
-    //todo
+    const indexToEdit = experience.findIndex(
+      (company) => company.companyKey == keyToEdit
+    )
+    newCompanyList[indexToEdit].admin.editing =
+      !newCompanyList[indexToEdit].admin.editing
+    handleExperienceDetailsChange(newCompanyList)
   }
   function onExperienceCompanyDelete(keyToDelete) {
-    //todo (might want some sort of confimation here)
+    if (!confirm('Are you sure you wish to delete?')) return
+    const newCompanyListDeleted = newCompanyList.filter(
+      (company) => company.companyKey !== keyToDelete
+    )
+    handleExperienceDetailsChange(newCompanyListDeleted)
   }
   function onExperienceCompanyShowHide(keyToToggle) {
-    //todo
+    const indexToEdit = newCompanyList.findIndex(
+      (company) => keyToToggle == company.companyKey
+    )
+    newCompanyList[indexToEdit].admin.displayOnCV =
+      !newCompanyList[indexToEdit].admin.displayOnCV
+    handleExperienceDetailsChange(newCompanyList)
   }
   function addNewCompany() {
-    //todo
+    newCompanyList.push(newCompanyTemplate)
+    handleExperienceDetailsChange(newCompanyList)
   }
 
   return (
@@ -82,5 +109,20 @@ function ExperienceList({
 }
 
 function CompanyInputs({ company, onExperienceDetailsChange }) {
-  //todo
+  return (
+    <div className='educationDetailsInputContainer'>
+      <label htmlFor='Company'>Company:</label>
+      <input
+        type='text'
+        id='company'
+        defaultValue={company.company}
+        onChange={(e) => onExperienceDetailsChange(e, company.companyKey)}
+      />
+      <PositionList positions={company.positions} />
+    </div>
+  )
+}
+
+function PositionList({ positions }) {
+  return <p>test</p>
 }

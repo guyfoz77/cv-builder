@@ -53,7 +53,7 @@ function App() {
   function handleExperienceDetailsChange(newExperienceList) {
     //replaces the storage array and the experienceDetails state with newExperienceList.
     setExperienceDetails(newExperienceList)
-    userInputData.experience(newExperienceList)
+    userInputData.experience = newExperienceList
   }
 
   return (

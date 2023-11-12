@@ -7,12 +7,6 @@ export function EducationInputContainer({
 }) {
   let newSchoolList = [...education]
 
-  function handleEducationSchoolClick(keyToEdit) {
-    const indexToEdit = education.findIndex((school) => school.key == keyToEdit)
-    newSchoolList[indexToEdit].admin.editing =
-      !newSchoolList[indexToEdit].admin.editing
-    handleEducationDetailsChange(newSchoolList)
-  }
   function onEducationDetailsChange(e, keyToEdit) {
     const indexToEdit = userInputData.education.findIndex(
       (school) => keyToEdit == school.key
@@ -36,6 +30,12 @@ export function EducationInputContainer({
         break
     }
     newSchoolList[indexToEdit] = editedSchool
+    handleEducationDetailsChange(newSchoolList)
+  }
+  function handleEducationSchoolClick(keyToEdit) {
+    const indexToEdit = education.findIndex((school) => school.key == keyToEdit)
+    newSchoolList[indexToEdit].admin.editing =
+      !newSchoolList[indexToEdit].admin.editing
     handleEducationDetailsChange(newSchoolList)
   }
   function onEducationSchoolDelete(keyToDelete) {
@@ -121,36 +121,34 @@ function EducationList({
 }
 
 function EducationInputs({ school, onEducationDetailsChange }) {
-  let schoolUpdate = { ...school }
-
   return (
     <div className='educationDetailsInputsContainer'>
       <label htmlFor='school'>School:</label>
       <input
         type='text'
         id='school'
-        defaultValue={schoolUpdate.school}
+        defaultValue={school.school}
         onChange={onEducationDetailsChange}
       />
       <label htmlFor='degree'>Degree:</label>
       <input
         type='text'
         id='degree'
-        defaultValue={schoolUpdate.degree}
+        defaultValue={school.degree}
         onChange={onEducationDetailsChange}
       />
       <label htmlFor='start'>Start Date:</label>
       <input
         type='text'
         id='start'
-        defaultValue={schoolUpdate.start}
+        defaultValue={school.start}
         onChange={onEducationDetailsChange}
       />
       <label htmlFor='end'>End Date:</label>
       <input
         type='text'
         id='end'
-        defaultValue={schoolUpdate.end}
+        defaultValue={school.end}
         onChange={onEducationDetailsChange}
       />
       <label htmlFor='details'>Details:</label>
@@ -158,7 +156,7 @@ function EducationInputs({ school, onEducationDetailsChange }) {
         rows={5}
         type='text'
         id='details'
-        defaultValue={schoolUpdate.details}
+        defaultValue={school.details}
         onChange={onEducationDetailsChange}
       />
     </div>
