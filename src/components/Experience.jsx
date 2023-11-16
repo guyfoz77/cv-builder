@@ -141,7 +141,6 @@ function CompanyInputs({
 }
 
 function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
-  //todo: make these buttons work (ive done the click and the bin)
   //todo: make data show up on CV
   let newPositionList = [...positions]
 
@@ -163,6 +162,14 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
     )
     handlePositionDetailsChange(newPositionListDeleted, companyKey)
   }
+  function onExperiencePositionShowHide(keyToToggle) {
+    const indexToEdit = newPositionList.findIndex(
+      (position) => keyToToggle == position.positionKey
+    )
+    newPositionList[indexToEdit].admin.displayOnCV =
+      !newPositionList[indexToEdit].admin.displayOnCV
+    handlePositionDetailsChange(newPositionList, companyKey)
+  }
 
   return positions.map((position) => (
     <div key={position.positionKey}>
@@ -175,7 +182,10 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
       >
         Delete
       </h4>
-      <h4 className='material-symbols-sharp display'>
+      <h4
+        className='material-symbols-sharp display'
+        onClick={() => onExperiencePositionShowHide(position.positionKey)}
+      >
         {position.admin.displayOnCV ? 'visibility' : 'visibility_off'}
       </h4>
       <h4
