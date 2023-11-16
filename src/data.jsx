@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid'
 
 export const exampleData = {
   personalDetails: {
@@ -79,7 +79,7 @@ export const exampleData = {
       ],
     },
   ],
-};
+}
 
 export const newSchoolTemplate = {
   school: 'New School',
@@ -89,23 +89,24 @@ export const newSchoolTemplate = {
   details: '',
   key: uuid(),
   admin: { editing: true, displayOnCV: true },
-};
+}
 
 export const newCompanyTemplate = {
   company: 'New company',
-  companyKey: uuid(),
+  companyKey: '',
   admin: { editing: true, displayOnCV: true },
   positions: [
+    //this initial position will need removing at some point
     {
-      position: '',
+      position: 'initial position',
       start: '',
       end: '',
       details: '',
-      positionKey: uuid(),
+      positionKey: '',
       admin: { editing: false, displayOnCV: true },
     },
   ],
-};
+}
 
 export const newPositionTemplate = {
   position: 'New position',
@@ -114,6 +115,6 @@ export const newPositionTemplate = {
   details: '',
   positionKey: uuid(),
   admin: { editing: false, displayOnCV: true },
-};
+}
 
-export let userInputData = { ...exampleData };
+export let userInputData = { ...exampleData }

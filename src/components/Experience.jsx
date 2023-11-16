@@ -1,4 +1,5 @@
 import { userInputData, newCompanyTemplate, newPositionTemplate } from '../data'
+import { v4 as uuid } from 'uuid'
 
 export function ExperienceInputContainer({
   experience,
@@ -44,7 +45,9 @@ export function ExperienceInputContainer({
     handleExperienceDetailsChange(newCompanyList)
   }
   function addNewCompany() {
-    newCompanyList.push(newCompanyTemplate)
+    let newCompany = { ...newCompanyTemplate }
+    newCompany.companyKey = uuid()
+    newCompanyList.push(newCompany)
     handleExperienceDetailsChange(newCompanyList)
   }
   function handlePositionDetailsChange(newPositions, companyKeyToEdit) {
@@ -204,6 +207,8 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
 }
 
 //todo: make these change the stuff on the CV
+//todo: make input to add experience.
+//bug: adding more than one company duplicates their key.
 function PositionInputs({ onExperienceDetailsChange, position }) {
   return (
     <div className='positionDetailsInputsContainer'>
