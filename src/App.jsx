@@ -9,7 +9,10 @@ import {
   EducationDetailsCV,
 } from './components/Education'
 
-import { ExperienceInputContainer } from './components/Experience'
+import {
+  ExperienceInputContainer,
+  ExperienceDetailsCV,
+} from './components/Experience'
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState(
@@ -91,7 +94,10 @@ function App() {
           <h3>Education</h3>
           <EducationDetailsCV education={educationDetails} />
         </div>
-        <div className='professionalExperienceCV'>{/* todo */}</div>
+        <div className='professionalExperienceCV'>
+          <h3>Professional Experience</h3>
+          <ExperienceDetailsCV experience={experienceDetails} />
+        </div>
       </main>
     </div>
   )

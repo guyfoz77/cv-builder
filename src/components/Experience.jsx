@@ -141,7 +141,6 @@ function CompanyInputs({
 }
 
 function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
-  //todo: make data show up on CV
   let newPositionList = [...positions]
 
   function onPositionDetailsChange(e, keyToEdit) {
@@ -237,6 +236,52 @@ function PositionInputs({ onExperienceDetailsChange, position }) {
         defaultValue={position.details}
         // onChange={}
       />
+    </div>
+  )
+}
+
+//list of companys
+export function ExperienceDetailsCV({ experience }) {
+  return (
+    <div className='experienceListCV'>
+      {experience.map((company) => (
+        <CompanyDetailsCV key={company.companyKey} company={company} />
+      ))}
+    </div>
+  )
+}
+//single company with list of positions.
+function CompanyDetailsCV({ company }) {
+  if (!company.admin.displayOnCV) return
+  return (
+    <div className='companyCV' key={company.companyKey}>
+      <p className='companyName'>
+        <b>{company.company}</b>
+      </p>
+      <PositionListCV company={company} />
+    </div>
+  )
+}
+//List of positions within a company
+function PositionListCV({ company }) {
+  return (
+    <div className={'positionContainerCV'}>
+      {company.positions.map((position) => (
+        <PositionCV key={position.positionKey} position={position} />
+      ))}
+    </div>
+  )
+}
+//single position card on CV
+function PositionCV({ position }) {
+  if (!position.admin.displayOnCV) return
+  return (
+    <div className='positionCardCV'>
+      <p>{position.position}</p>
+      <p>
+        {position.start} - {position.end}
+      </p>
+      <p>{position.details}</p>
     </div>
   )
 }
