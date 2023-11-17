@@ -113,7 +113,7 @@ export const newPositionTemplate = {
   start: '',
   end: '',
   details: '',
-  positionKey: uuid(),
+  positionKey: '',
   admin: { editing: false, displayOnCV: true },
 }
 

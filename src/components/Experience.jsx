@@ -125,6 +125,14 @@ function CompanyInputs({
   onExperienceDetailsChange,
   handlePositionDetailsChange,
 }) {
+  function addNewPosition() {
+    let newPosition = { ...newPositionTemplate }
+    newPosition.positionKey = uuid()
+    const newPositionsList = [...company.positions]
+    newPositionsList.push(newPosition)
+    console.log(newPositionsList)
+    handlePositionDetailsChange(newPositionsList, company.companyKey)
+  }
   return (
     <div className='educationDetailsInputContainer'>
       <label htmlFor='Company'>Company:</label>
@@ -139,6 +147,7 @@ function CompanyInputs({
         companyKey={company.companyKey}
         handlePositionDetailsChange={handlePositionDetailsChange}
       />
+      <button onClick={addNewPosition}>New Position</button>
     </div>
   )
 }
@@ -208,7 +217,6 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
 
 //todo: make these change the stuff on the CV
 //todo: make input to add experience.
-//bug: adding more than one company duplicates their key.
 function PositionInputs({ onExperienceDetailsChange, position }) {
   return (
     <div className='positionDetailsInputsContainer'>
