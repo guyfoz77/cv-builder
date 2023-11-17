@@ -156,7 +156,26 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
   let newPositionList = [...positions]
 
   function onPositionDetailsChange(e, keyToEdit) {
-    //todo
+    const indexToEdit = positions.findIndex(
+      (position) => position.positionKey == keyToEdit
+    )
+    let editedPosition = { ...newPositionList[indexToEdit] }
+    switch (e.target.id) {
+      case 'position':
+        editedPosition.position = e.target.value
+        break
+      case 'start':
+        editedPosition.start = e.target.value
+        break
+      case 'end':
+        editedPosition.end = e.target.value
+        break
+      case 'details':
+        editedPosition.details = e.target.value
+        break
+    }
+    newPositionList[indexToEdit] = editedPosition
+    handlePositionDetailsChange(newPositionList, companyKey)
   }
 
   function onExperiencePositionClick(keyToEdit) {
@@ -207,7 +226,7 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
       </h4>
       {position.admin.editing && (
         <PositionInputs
-          // onExperienceDetailsChange={onExperienceDetailsChange}
+          onPositionDetailsChange={onPositionDetailsChange}
           position={position}
         />
       )}
@@ -215,9 +234,7 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
   ))
 }
 
-//todo: make these change the stuff on the CV
-//todo: make input to add experience.
-function PositionInputs({ onExperienceDetailsChange, position }) {
+function PositionInputs({ onPositionDetailsChange, position }) {
   return (
     <div className='positionDetailsInputsContainer'>
       <label htmlFor='position'>Position:</label>
@@ -225,21 +242,21 @@ function PositionInputs({ onExperienceDetailsChange, position }) {
         type='text'
         id='position'
         defaultValue={position.position}
-        // onChange={}
+        onChange={(e) => onPositionDetailsChange(e, position.positionKey)}
       />
       <label htmlFor='start'>Start Date:</label>
       <input
         type='text'
         id='start'
         defaultValue={position.start}
-        // onChange={}
+        onChange={(e) => onPositionDetailsChange(e, position.positionKey)}
       />
       <label htmlFor='end'>End Date:</label>
       <input
         type='text'
         id='end'
         defaultValue={position.end}
-        // onChange={}
+        onChange={(e) => onPositionDetailsChange(e, position.positionKey)}
       />
       <label htmlFor='details'>Details:</label>
       <textarea
@@ -247,7 +264,7 @@ function PositionInputs({ onExperienceDetailsChange, position }) {
         type='text'
         id='details'
         defaultValue={position.details}
-        // onChange={}
+        onChange={(e) => onPositionDetailsChange(e, position.positionKey)}
       />
     </div>
   )
