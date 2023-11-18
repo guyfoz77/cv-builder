@@ -46,15 +46,13 @@ function App() {
         break
     }
   }
-
+  //replaces the storage array and the educationalDetails state with NewSchoolList.
   function handleEducationDetailsChange(newSchoolList) {
-    //replaces the storage array and the educationalDetails state with NewSchoolList.
     setEducationDetails(newSchoolList)
     userInputData.education = newSchoolList
   }
-
+  //replaces the storage array and the experienceDetails state with newExperienceList.
   function handleExperienceDetailsChange(newExperienceList) {
-    //replaces the storage array and the experienceDetails state with newExperienceList.
     setExperienceDetails(newExperienceList)
     userInputData.experience = newExperienceList
   }
@@ -62,7 +60,10 @@ function App() {
   return (
     <div className='mainContainer'>
       <aside className='userInput'>
-        <div className='clearLoad component'>{/* todo */} clear/load</div>
+        <div className='clearLoad component'>
+          <button>Clear Form</button>
+          <button>Load Example</button>
+        </div>
         <PersonalDetails
           name={personalDetails.name}
           email={personalDetails.email}
@@ -70,12 +71,10 @@ function App() {
           address={personalDetails.address}
           onPersonalDetailsChange={handlePersonalDetailsChange}
         />
-        <div className='education component'>
-          <EducationInputContainer
-            education={educationDetails}
-            handleEducationDetailsChange={handleEducationDetailsChange}
-          />
-        </div>
+        <EducationInputContainer
+          education={educationDetails}
+          handleEducationDetailsChange={handleEducationDetailsChange}
+        />
         <div className='experience component'>
           <ExperienceInputContainer
             experience={experienceDetails}
@@ -90,14 +89,8 @@ function App() {
           phone={personalDetails.phone}
           address={personalDetails.address}
         />
-        <div className='educationCV'>
-          <h3>Education</h3>
-          <EducationDetailsCV education={educationDetails} />
-        </div>
-        <div className='professionalExperienceCV'>
-          <h3>Professional Experience</h3>
-          <ExperienceDetailsCV experience={experienceDetails} />
-        </div>
+        <EducationDetailsCV education={educationDetails} />
+        <ExperienceDetailsCV experience={experienceDetails} />
       </main>
     </div>
   )

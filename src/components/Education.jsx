@@ -58,7 +58,7 @@ export function EducationInputContainer({
   }
 
   return (
-    <>
+    <div className='education component'>
       <h2>Education</h2>
       <div className='educationDetailsContainer'>
         <EducationList
@@ -68,15 +68,11 @@ export function EducationInputContainer({
           onEducationSchoolDelete={onEducationSchoolDelete}
           onEducationSchoolShowHide={onEducationSchoolShowHide}
         />
-        <div className='buttons'>
-          <button onClick={addNewSchool}>New</button>
-        </div>
+        <button onClick={addNewSchool}>New</button>
       </div>
-    </>
+    </div>
   )
 }
-
-//
 
 function EducationList({
   education,
@@ -167,6 +163,7 @@ function EducationInputs({ school, onEducationDetailsChange }) {
 export function EducationDetailsCV({ education }) {
   return (
     <div className='educationListCV'>
+      <h3>Education</h3>
       {education.map((school) => (
         <SchoolDetailsCV key={school.key} school={school} />
       ))}

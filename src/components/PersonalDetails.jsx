@@ -37,7 +37,7 @@ export function PersonalDetails({
         onChange={onPersonalDetailsChange}
       />
     </div>
-  );
+  )
 }
 
 export function PersonalDetailsCV({ name, email, phone, address }) {
@@ -63,5 +63,5 @@ export function PersonalDetailsCV({ name, email, phone, address }) {
         </div>
       )}
     </div>
-  );
+  )
 }

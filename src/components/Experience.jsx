@@ -59,22 +59,18 @@ export function ExperienceInputContainer({
   }
 
   return (
-    <>
+    <div className='experienceComponent'>
       <h2>Experience</h2>
-      <div className='experienceDetailsContainer'>
-        <ExperienceList
-          experience={experience}
-          onExperienceDetailsChange={onExperienceDetailsChange}
-          onExperienceCompanyClick={onExperienceCompanyClick}
-          onExperienceCompanyDelete={onExperienceCompanyDelete}
-          onExperienceCompanyShowHide={onExperienceCompanyShowHide}
-          handlePositionDetailsChange={handlePositionDetailsChange}
-        />
-      </div>
-      <div className='buttons'>
-        <button onClick={addNewCompany}>New</button>
-      </div>
-    </>
+      <ExperienceList
+        experience={experience}
+        onExperienceDetailsChange={onExperienceDetailsChange}
+        onExperienceCompanyClick={onExperienceCompanyClick}
+        onExperienceCompanyDelete={onExperienceCompanyDelete}
+        onExperienceCompanyShowHide={onExperienceCompanyShowHide}
+        handlePositionDetailsChange={handlePositionDetailsChange}
+      />
+      <button onClick={addNewCompany}>New</button>
+    </div>
   )
 }
 
@@ -274,6 +270,7 @@ function PositionInputs({ onPositionDetailsChange, position }) {
 export function ExperienceDetailsCV({ experience }) {
   return (
     <div className='experienceListCV'>
+      <h3>Professional Experience</h3>
       {experience.map((company) => (
         <CompanyDetailsCV key={company.companyKey} company={company} />
       ))}
