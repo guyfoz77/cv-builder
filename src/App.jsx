@@ -56,19 +56,21 @@ function App() {
     setExperienceDetails(newExperienceList)
     userInputData.experience = newExperienceList
   }
+  function clearForm() {
+    setPersonalDetails({ name: '', email: '', phone: '', address: '' })
+    setEducationDetails([])
+    setExperienceDetails([])
+  }
 
   return (
     <div className='mainContainer'>
       <aside className='userInput'>
         <div className='clearLoad component'>
-          <button>Clear Form</button>
+          <button onClick={clearForm}>Clear Form</button>
           <button>Load Example</button>
         </div>
         <PersonalDetails
-          name={personalDetails.name}
-          email={personalDetails.email}
-          phone={personalDetails.phone}
-          address={personalDetails.address}
+          personalDetails={personalDetails}
           onPersonalDetailsChange={handlePersonalDetailsChange}
         />
         <EducationInputContainer

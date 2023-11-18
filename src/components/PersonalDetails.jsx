@@ -1,10 +1,4 @@
-export function PersonalDetails({
-  name,
-  email,
-  phone,
-  address,
-  onPersonalDetailsChange,
-}) {
+export function PersonalDetails({ personalDetails, onPersonalDetailsChange }) {
   return (
     <div className='personalDetails component'>
       <h2>Personal Details</h2>
@@ -12,28 +6,28 @@ export function PersonalDetails({
       <input
         type='text'
         id='name'
-        defaultValue={name}
+        value={personalDetails.name}
         onChange={onPersonalDetailsChange}
       />
       <label htmlFor='email'>email:</label>
       <input
         type='email'
         id='email'
-        defaultValue={email}
+        value={personalDetails.email}
         onChange={onPersonalDetailsChange}
       />
       <label htmlFor='phone'>Phone number:</label>
       <input
         type='phone'
         id='phone'
-        defaultValue={phone}
+        value={personalDetails.phone}
         onChange={onPersonalDetailsChange}
       />
       <label htmlFor='address'>Address:</label>
       <input
         type='text'
         id='address'
-        defaultValue={address}
+        value={personalDetails.address}
         onChange={onPersonalDetailsChange}
       />
     </div>
