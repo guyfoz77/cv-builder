@@ -57,10 +57,12 @@ function App() {
     userInputData.experience = newExperienceList
   }
   function clearForm() {
+    if (!confirm('Are you sure?')) return
     setPersonalDetails({ name: '', email: '', phone: '', address: '' })
     setEducationDetails([])
     setExperienceDetails([])
   }
+  function loadExample() {}
 
   return (
     <div className='mainContainer'>
