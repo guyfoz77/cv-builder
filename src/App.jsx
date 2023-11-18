@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { userInputData } from './data'
+import { userInputData, exampleData } from './data'
 import {
   PersonalDetails,
   PersonalDetailsCV,
@@ -62,14 +62,19 @@ function App() {
     setEducationDetails([])
     setExperienceDetails([])
   }
-  function loadExample() {}
+  function loadExample() {
+    if (!confirm('Are you sure?')) return
+    setPersonalDetails({ ...exampleData.personalDetails })
+    setEducationDetails([...exampleData.education])
+    setExperienceDetails([...exampleData.experience])
+  }
 
   return (
     <div className='mainContainer'>
       <aside className='userInput'>
         <div className='clearLoad component'>
           <button onClick={clearForm}>Clear Form</button>
-          <button>Load Example</button>
+          <button onClick={loadExample}>Load Example</button>
         </div>
         <PersonalDetails
           personalDetails={personalDetails}
