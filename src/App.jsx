@@ -25,10 +25,7 @@ function GithubLinkContainer() {
       <img src='./src/assets/github-mark.svg' aria-description='github mark' />
 
       <p>
-        <i>Made by</i>
-      </p>
-      <p>
-        <i>Guy Foster</i>
+        <i>Made by Guy Foster</i>
       </p>
     </a>
   )

@@ -36,26 +36,28 @@ export function PersonalDetails({ personalDetails, onPersonalDetailsChange }) {
 
 export function PersonalDetailsCV({ name, email, phone, address }) {
   return (
-    <div className='personalDetailsCV componentCV'>
+    <div className='personalDetailsCV'>
       <h1>{name}</h1>
-      {email && (
-        <div className='emailCV'>
-          <span className='material-symbols-sharp'>mail</span>
-          <span> {email}</span>
-        </div>
-      )}
-      {phone && (
-        <div className='phoneCV'>
-          <span className='material-symbols-sharp'>phone</span>
-          <span> {phone}</span>
-        </div>
-      )}
-      {address && (
-        <div className='addressCV'>
-          <span className='material-symbols-sharp'>location_on</span>
-          <span> {address}</span>
-        </div>
-      )}
+      <div className='emailPhoneLocation'>
+        {email && (
+          <div className='emailCV'>
+            <span className='material-symbols-sharp'>mail</span>
+            <span> {email}</span>
+          </div>
+        )}
+        {phone && (
+          <div className='phoneCV'>
+            <span className='material-symbols-sharp'>phone</span>
+            <span> {phone}</span>
+          </div>
+        )}
+        {address && (
+          <div className='addressCV'>
+            <span className='material-symbols-sharp'>location_on</span>
+            <span> {address}</span>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

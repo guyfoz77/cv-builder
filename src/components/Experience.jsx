@@ -146,6 +146,7 @@ function CompanyInputs({
         defaultValue={company.company}
         onChange={(e) => onExperienceDetailsChange(e, company.companyKey)}
       />
+      <h4>Positions</h4>
       <PositionList
         positions={company.positions}
         companyKey={company.companyKey}

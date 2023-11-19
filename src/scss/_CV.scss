@@ -4,4 +4,24 @@
 .CV {
   flex: 2;
   border: solid black;
+
+  .personalDetailsCV {
+    @include m.flexColumnGap;
+    background-color: v.$accent;
+    padding: 20px;
+
+    h1 {
+      align-self: center;
+    }
+    .emailPhoneLocation {
+      display: flex;
+      justify-content: space-around;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
 }
