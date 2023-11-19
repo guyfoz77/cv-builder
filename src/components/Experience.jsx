@@ -86,28 +86,30 @@ function ExperienceList({
   return (
     <div className='experienceDetailsContainer'>
       {experience.map((company) => (
-        <div key={company.companyKey}>
-          <h3 onClick={() => onExperienceCompanyClick(company.companyKey)}>
-            {company.company || 'Name me!'}
-          </h3>
-          <h3
-            className='material-symbols-sharp delete'
-            onClick={() => onExperienceCompanyDelete(company.companyKey)}
-          >
-            Delete
-          </h3>
-          <h3
-            className='material-symbols-sharp display'
-            onClick={() => onExperienceCompanyShowHide(company.companyKey)}
-          >
-            {company.admin.displayOnCV ? 'visibility' : 'visibility_off'}
-          </h3>
-          <h3
-            className='material-symbols-sharp chevron'
-            onClick={() => onExperienceCompanyClick(company.companyKey)}
-          >
-            {company.admin.editing ? 'expand_more' : 'expand_less'}
-          </h3>
+        <div className='companyNameAndInputContainer' key={company.companyKey}>
+          <div className='titleAndSymbols'>
+            <h3 onClick={() => onExperienceCompanyClick(company.companyKey)}>
+              {company.company || 'Name me!'}
+            </h3>
+            <h3
+              className='material-symbols-sharp delete'
+              onClick={() => onExperienceCompanyDelete(company.companyKey)}
+            >
+              Delete
+            </h3>
+            <h3
+              className='material-symbols-sharp display'
+              onClick={() => onExperienceCompanyShowHide(company.companyKey)}
+            >
+              {company.admin.displayOnCV ? 'visibility' : 'visibility_off'}
+            </h3>
+            <h3
+              className='material-symbols-sharp chevron'
+              onClick={() => onExperienceCompanyClick(company.companyKey)}
+            >
+              {company.admin.editing ? 'expand_more' : 'expand_less'}
+            </h3>
+          </div>
           {company.admin.editing && (
             <CompanyInputs
               onExperienceDetailsChange={onExperienceDetailsChange}
@@ -204,28 +206,30 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
   }
 
   return positions.map((position) => (
-    <div key={position.positionKey}>
-      <h4 onClick={() => onExperiencePositionClick(position.positionKey)}>
-        {position.position}
-      </h4>
-      <h4
-        className='material-symbols-sharp delete'
-        onClick={() => onExperiencePositionDelete(position.positionKey)}
-      >
-        Delete
-      </h4>
-      <h4
-        className='material-symbols-sharp display'
-        onClick={() => onExperiencePositionShowHide(position.positionKey)}
-      >
-        {position.admin.displayOnCV ? 'visibility' : 'visibility_off'}
-      </h4>
-      <h4
-        className='material-symbols-sharp chevron'
-        onClick={() => onExperiencePositionClick(position.positionKey)}
-      >
-        {position.admin.editing ? 'expand_more' : 'expand_less'}
-      </h4>
+    <div className='positionNameAndInputContainer' key={position.positionKey}>
+      <div className='titleAndSymbols'>
+        <h4 onClick={() => onExperiencePositionClick(position.positionKey)}>
+          {position.position}
+        </h4>
+        <h4
+          className='material-symbols-sharp delete'
+          onClick={() => onExperiencePositionDelete(position.positionKey)}
+        >
+          Delete
+        </h4>
+        <h4
+          className='material-symbols-sharp display'
+          onClick={() => onExperiencePositionShowHide(position.positionKey)}
+        >
+          {position.admin.displayOnCV ? 'visibility' : 'visibility_off'}
+        </h4>
+        <h4
+          className='material-symbols-sharp chevron'
+          onClick={() => onExperiencePositionClick(position.positionKey)}
+        >
+          {position.admin.editing ? 'expand_more' : 'expand_less'}
+        </h4>
+      </div>
       {position.admin.editing && (
         <PositionInputs
           onPositionDetailsChange={onPositionDetailsChange}

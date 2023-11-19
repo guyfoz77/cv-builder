@@ -24,6 +24,19 @@
     border-radius: 0 5px 5px 0;
     padding: 5px;
   }
+  .titleAndSymbols {
+    display: flex;
+    align-items: center;
+    h3,
+    h4 {
+      flex: 1;
+    }
+    .delete,
+    .display,
+    .chevron {
+      flex: 0;
+    }
+  }
 }
 .githubLinkContainer {
   display: grid;

@@ -82,28 +82,30 @@ function EducationList({
   onEducationSchoolShowHide,
 }) {
   return education.map((school) => (
-    <div key={school.key}>
-      <h3 onClick={() => onEducationSchoolClick(school.key)}>
-        {school.school || 'Name me!'}
-      </h3>
-      <h3
-        className='material-symbols-sharp delete'
-        onClick={() => onEducationSchoolDelete(school.key)}
-      >
-        Delete
-      </h3>
-      <h3
-        className='material-symbols-sharp display'
-        onClick={() => onEducationSchoolShowHide(school.key)}
-      >
-        {school.admin.displayOnCV ? 'visibility' : 'visibility_off'}
-      </h3>
-      <h3
-        className='material-symbols-sharp chevron'
-        onClick={() => onEducationSchoolClick(school.key)}
-      >
-        {school.admin.editing ? 'expand_more' : 'expand_less'}
-      </h3>
+    <div className='schoolNameAndInputContainer' key={school.key}>
+      <div className='titleAndSymbols'>
+        <h3 onClick={() => onEducationSchoolClick(school.key)}>
+          {school.school || 'Name me!'}
+        </h3>
+        <h3
+          className='material-symbols-sharp delete'
+          onClick={() => onEducationSchoolDelete(school.key)}
+        >
+          Delete
+        </h3>
+        <h3
+          className='material-symbols-sharp display'
+          onClick={() => onEducationSchoolShowHide(school.key)}
+        >
+          {school.admin.displayOnCV ? 'visibility' : 'visibility_off'}
+        </h3>
+        <h3
+          className='material-symbols-sharp chevron'
+          onClick={() => onEducationSchoolClick(school.key)}
+        >
+          {school.admin.editing ? 'expand_more' : 'expand_less'}
+        </h3>
+      </div>
       {school.admin.editing && (
         <EducationInputs
           onEducationDetailsChange={(e) =>
