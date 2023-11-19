@@ -86,24 +86,24 @@ function EducationList({
       <h3 onClick={() => onEducationSchoolClick(school.key)}>
         {school.school || 'Name me!'}
       </h3>
-      <span
+      <h3
         className='material-symbols-sharp delete'
         onClick={() => onEducationSchoolDelete(school.key)}
       >
         Delete
-      </span>
-      <span
+      </h3>
+      <h3
         className='material-symbols-sharp display'
         onClick={() => onEducationSchoolShowHide(school.key)}
       >
         {school.admin.displayOnCV ? 'visibility' : 'visibility_off'}
-      </span>
-      <span
+      </h3>
+      <h3
         className='material-symbols-sharp chevron'
         onClick={() => onEducationSchoolClick(school.key)}
       >
         {school.admin.editing ? 'expand_more' : 'expand_less'}
-      </span>
+      </h3>
       {school.admin.editing && (
         <EducationInputs
           onEducationDetailsChange={(e) =>

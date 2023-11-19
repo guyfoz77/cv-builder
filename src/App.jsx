@@ -109,12 +109,10 @@ function App() {
           education={educationDetails}
           handleEducationDetailsChange={handleEducationDetailsChange}
         />
-        <div className='experience component'>
-          <ExperienceInputContainer
-            experience={experienceDetails}
-            handleExperienceDetailsChange={handleExperienceDetailsChange}
-          />
-        </div>
+        <ExperienceInputContainer
+          experience={experienceDetails}
+          handleExperienceDetailsChange={handleExperienceDetailsChange}
+        />
       </aside>
       <main className='CV'>
         <PersonalDetailsCV

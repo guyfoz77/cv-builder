@@ -22,6 +22,9 @@
 .component h2 {
   margin: 0;
 }
+.component h3 {
+  margin: 0;
+}
 .component input,
 .component textarea {
   background-color: #dcdcdd;

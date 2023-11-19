@@ -59,7 +59,7 @@ export function ExperienceInputContainer({
   }
 
   return (
-    <div className='experienceComponent'>
+    <div className='experience component'>
       <h2>Experience</h2>
       <ExperienceList
         experience={experience}
@@ -68,8 +68,8 @@ export function ExperienceInputContainer({
         onExperienceCompanyDelete={onExperienceCompanyDelete}
         onExperienceCompanyShowHide={onExperienceCompanyShowHide}
         handlePositionDetailsChange={handlePositionDetailsChange}
+        addNewCompany={addNewCompany}
       />
-      <button onClick={addNewCompany}>New</button>
     </div>
   )
 }
@@ -81,39 +81,45 @@ function ExperienceList({
   onExperienceCompanyDelete,
   onExperienceCompanyShowHide,
   handlePositionDetailsChange,
+  addNewCompany,
 }) {
-  return experience.map((company) => (
-    <div key={company.companyKey}>
-      <h3 onClick={() => onExperienceCompanyClick(company.companyKey)}>
-        {company.company || 'Name me!'}
-      </h3>
-      <h3
-        className='material-symbols-sharp delete'
-        onClick={() => onExperienceCompanyDelete(company.companyKey)}
-      >
-        Delete
-      </h3>
-      <h3
-        className='material-symbols-sharp display'
-        onClick={() => onExperienceCompanyShowHide(company.companyKey)}
-      >
-        {company.admin.displayOnCV ? 'visibility' : 'visibility_off'}
-      </h3>
-      <h3
-        className='material-symbols-sharp chevron'
-        onClick={() => onExperienceCompanyClick(company.companyKey)}
-      >
-        {company.admin.editing ? 'expand_more' : 'expand_less'}
-      </h3>
-      {company.admin.editing && (
-        <CompanyInputs
-          onExperienceDetailsChange={onExperienceDetailsChange}
-          company={company}
-          handlePositionDetailsChange={handlePositionDetailsChange}
-        />
-      )}
+  return (
+    <div className='experienceDetailsContainer'>
+      {experience.map((company) => (
+        <div key={company.companyKey}>
+          <h3 onClick={() => onExperienceCompanyClick(company.companyKey)}>
+            {company.company || 'Name me!'}
+          </h3>
+          <h3
+            className='material-symbols-sharp delete'
+            onClick={() => onExperienceCompanyDelete(company.companyKey)}
+          >
+            Delete
+          </h3>
+          <h3
+            className='material-symbols-sharp display'
+            onClick={() => onExperienceCompanyShowHide(company.companyKey)}
+          >
+            {company.admin.displayOnCV ? 'visibility' : 'visibility_off'}
+          </h3>
+          <h3
+            className='material-symbols-sharp chevron'
+            onClick={() => onExperienceCompanyClick(company.companyKey)}
+          >
+            {company.admin.editing ? 'expand_more' : 'expand_less'}
+          </h3>
+          {company.admin.editing && (
+            <CompanyInputs
+              onExperienceDetailsChange={onExperienceDetailsChange}
+              company={company}
+              handlePositionDetailsChange={handlePositionDetailsChange}
+            />
+          )}
+        </div>
+      ))}
+      <button onClick={addNewCompany}>New</button>
     </div>
-  ))
+  )
 }
 
 function CompanyInputs({
