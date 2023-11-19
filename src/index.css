@@ -1,13 +1,29 @@
+.CV {
+  flex: 2;
+  border: solid black;
+}
+
+.userInput {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.component {
+  background-color: #c5c3c6;
+  display: flex;
+  flex-direction: column;
+  border: solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: var(--vlight-grey);
-  --dark-grey: #46494c;
-  --light-grey: #c5c3c6;
-  --vlight-grey: #dcdcdd;
-  --blue-dark-grey: #4c5c68;
-  --accent: #1985a1;
+  background-color: #c5c3c6;
 }
 
 #root {
@@ -31,27 +47,6 @@ h1 {
 .mainContainer {
   display: flex;
   gap: 10px;
-}
-
-.userInput {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  border: solid black;
-}
-
-.component {
-  background-color: var(--light-grey);
-  display: flex;
-  flex-direction: column;
-  border: solid black;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.CV {
-  flex: 2;
-  border: solid black;
 }
 
 /*# sourceMappingURL=index.css.map */
