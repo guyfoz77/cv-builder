@@ -119,7 +119,7 @@ function ExperienceList({
           )}
         </div>
       ))}
-      <button onClick={addNewCompany}>New</button>
+      <button onClick={addNewCompany}>New Company</button>
     </div>
   )
 }
@@ -138,7 +138,7 @@ function CompanyInputs({
     handlePositionDetailsChange(newPositionsList, company.companyKey)
   }
   return (
-    <div className='educationDetailsInputContainer'>
+    <div className='companyDetailsInputContainer'>
       <label htmlFor='Company'>Company:</label>
       <input
         type='text'
@@ -242,7 +242,7 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
 
 function PositionInputs({ onPositionDetailsChange, position }) {
   return (
-    <div className='positionDetailsInputsContainer'>
+    <div className='positionDetailsInputContainer'>
       <label htmlFor='position'>Position:</label>
       <input
         type='text'

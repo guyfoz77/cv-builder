@@ -68,7 +68,7 @@ export function EducationInputContainer({
           onEducationSchoolDelete={onEducationSchoolDelete}
           onEducationSchoolShowHide={onEducationSchoolShowHide}
         />
-        <button onClick={addNewSchool}>New</button>
+        <button onClick={addNewSchool}>New School</button>
       </div>
     </div>
   )
@@ -120,7 +120,7 @@ function EducationList({
 
 function EducationInputs({ school, onEducationDetailsChange }) {
   return (
-    <div className='educationDetailsInputsContainer'>
+    <div className='educationDetailsInputContainer'>
       <label htmlFor='school'>School:</label>
       <input
         type='text'

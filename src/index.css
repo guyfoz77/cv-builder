@@ -18,12 +18,37 @@
   border: solid black;
   border-radius: 10px;
   padding: 10px;
+  gap: 10px;
 }
-.component h2 {
+.component h2,
+.component h3,
+.component h4 {
   margin: 0;
 }
-.component h3 {
-  margin: 0;
+.component .educationDetailsContainer,
+.component .experienceDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.component .positionNameAndInputContainer {
+  padding-left: 20px;
+}
+.component .positionNameAndInputContainer h4:first-child {
+  font-style: italic;
+}
+.component .schoolNameAndInputContainer .educationDetailsInputContainer,
+.component .schoolNameAndInputContainer .companyDetailsInputContainer,
+.component .schoolNameAndInputContainer .positionDetailsInputContainer,
+.component .companyNameAndInputContainer .educationDetailsInputContainer,
+.component .companyNameAndInputContainer .companyDetailsInputContainer,
+.component .companyNameAndInputContainer .positionDetailsInputContainer,
+.component .positionNameAndInputContainer .educationDetailsInputContainer,
+.component .positionNameAndInputContainer .companyDetailsInputContainer,
+.component .positionNameAndInputContainer .positionDetailsInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .component input,
 .component textarea {
@@ -39,11 +64,38 @@
 .component .titleAndSymbols h3,
 .component .titleAndSymbols h4 {
   flex: 1;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .component .titleAndSymbols .delete,
 .component .titleAndSymbols .display,
 .component .titleAndSymbols .chevron {
   flex: 0;
+  overflow: visible;
+}
+.component button {
+  padding: 5px;
+  border-color: white;
+  background-color: white;
+  border-style: none;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  cursor: pointer;
+  outline: none;
+  outline: 0;
+  text-align: center;
+  background-color: #1985a1;
+  color: #fff;
+  margin: 0 10% 0 10%;
+}
+.component button:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+.component button:active {
+  transform: translateY(2px);
 }
 
 .githubLinkContainer {

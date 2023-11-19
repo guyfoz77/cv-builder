@@ -6,7 +6,7 @@
   gap: $g * 1px;
 }
 
-@mixin buttonStyle($color: black) {
+@mixin buttonStyle($color: white) {
   padding: 5px;
   border-color: $color;
   background-color: $color;
