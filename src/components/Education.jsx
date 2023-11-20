@@ -184,8 +184,8 @@ function SchoolDetailsCV({ school }) {
       <p className='schoolDateRange'>
         {school.start} - {school.end}
       </p>
-      <p>{school.degree}</p>
-      <p>{school.details}</p>
+      <p className='schoolDegree'>{school.degree}</p>
+      <p className='schoolDescription'>{school.details}</p>
     </div>
   )
 }

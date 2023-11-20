@@ -21,6 +21,34 @@
   align-items: center;
   gap: 10px;
 }
+.CV h3 {
+  background-color: #c5c3c6;
+  padding: 5px;
+  text-align: center;
+  margin: 5px;
+}
+.CV .schoolCV {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 1fr auto;
+  gap: 10px;
+  margin: 15px;
+  padding: 5px;
+  box-shadow: 0 0 3px #4c5c68;
+}
+.CV .schoolCV * {
+  margin: 0;
+  overflow: hidden;
+}
+.CV .schoolCV .schoolDateRange {
+  font-style: italic;
+}
+.CV .schoolCV .schoolDegree {
+  grid-column: 1/3;
+}
+.CV .schoolCV .schoolDescription {
+  grid-column: 1/3;
+}
 
 .userInput {
   display: flex;
