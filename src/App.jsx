@@ -118,7 +118,9 @@ function App() {
           phone={personalDetails.phone}
           address={personalDetails.address}
         />
+        <h3>Education</h3>
         <EducationDetailsCV education={educationDetails} />
+        <h3>Professional Experience</h3>
         <ExperienceDetailsCV experience={experienceDetails} />
       </main>
     </div>

@@ -1,5 +1,5 @@
-@use './variables' as v;
-@use './mixins' as m;
+@use "./variables" as v;
+@use "./mixins" as m;
 
 .CV {
   flex: 2;
@@ -29,28 +29,76 @@
     background-color: v.$light-grey;
     padding: 5px;
     text-align: center;
-    margin: 5px;
+    margin: 10px 0 5px 0;
   }
-  .schoolCV {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr 1fr auto;
-    gap: 10px;
-    margin: 15px;
-    padding: 5px;
-    box-shadow: 0 0 3px v.$blue-dark-grey;
-    *{
-      margin: 0;
-      overflow: hidden;
+
+  .educationListCV {
+    display: flex;
+    flex-direction: column-reverse;
+    .schoolCV {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 1fr 1fr auto;
+      gap: 10px;
+      margin: 5px 15px;
+      padding: 5px;
+      border-left: solid v.$accent;
+
+      * {
+        margin: 0;
+        overflow: hidden;
+      }
+      .schoolDateRange {
+        font-style: italic;
+      }
+      .schoolDegree {
+        grid-column: 1 / 3;
+      }
+      .schoolDescription {
+        grid-column: 1 / 3;
+      }
     }
-    .schoolDateRange {
-      font-style: italic;
-    }
-    .schoolDegree {
-      grid-column: 1 / 3 ;
-    }
-    .schoolDescription {
-      grid-column: 1 / 3;
+  }
+  .experienceListCV {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .companyCV {
+      gap: 10px;
+      margin: 5px 15px;
+      padding: 5px;
+      border-left: solid v.$accent;
+
+      h4 {
+        margin: 0 5px 5px 5px;
+      }
+
+      .positionContainerCV {
+        @include m.flexColumnGap(5);
+        flex-direction: column-reverse;
+        margin-left: 5px;
+        padding-left: 5px;
+        // border-left: solid v.$accent;
+
+        .positionCardCV {
+          // display: grid;
+          // grid-template-columns: auto 1fr;
+          // grid-template-rows: auto auto;
+          // gap: 5px;
+          @include m.flexColumnGap(5);
+          border-left: solid v.$accent;
+          padding-left: 5px;
+
+          p {
+            margin: 0;
+          }
+          .positionDateRange {
+            font-style: italic;
+          }
+          .positionDetails {
+          }
+        }
+      }
     }
   }
 }

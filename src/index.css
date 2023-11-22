@@ -25,31 +25,68 @@
   background-color: #c5c3c6;
   padding: 5px;
   text-align: center;
-  margin: 5px;
+  margin: 10px 0 5px 0;
 }
-.CV .schoolCV {
+.CV .educationListCV {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.CV .educationListCV .schoolCV {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr 1fr auto;
   gap: 10px;
-  margin: 15px;
+  margin: 5px 15px;
   padding: 5px;
-  box-shadow: 0 0 3px #4c5c68;
+  border-left: solid #1985a1;
 }
-.CV .schoolCV * {
+.CV .educationListCV .schoolCV * {
   margin: 0;
   overflow: hidden;
 }
-.CV .schoolCV .schoolDateRange {
+.CV .educationListCV .schoolCV .schoolDateRange {
   font-style: italic;
 }
-.CV .schoolCV .schoolDegree {
+.CV .educationListCV .schoolCV .schoolDegree {
   grid-column: 1/3;
 }
-.CV .schoolCV .schoolDescription {
+.CV .educationListCV .schoolCV .schoolDescription {
   grid-column: 1/3;
 }
-
+.CV .experienceListCV {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.CV .experienceListCV .companyCV {
+  gap: 10px;
+  margin: 5px 15px;
+  padding: 5px;
+  border-left: solid #1985a1;
+}
+.CV .experienceListCV .companyCV h4 {
+  margin: 0 5px 5px 5px;
+}
+.CV .experienceListCV .companyCV .positionContainerCV {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-direction: column-reverse;
+  margin-left: 5px;
+  padding-left: 5px;
+}
+.CV .experienceListCV .companyCV .positionContainerCV .positionCardCV {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-left: solid #1985a1;
+  padding-left: 5px;
+}
+.CV .experienceListCV .companyCV .positionContainerCV .positionCardCV p {
+  margin: 0;
+}
+.CV .experienceListCV .companyCV .positionContainerCV .positionCardCV .positionDateRange {
+  font-style: italic;
+}
 .userInput {
   display: flex;
   flex-direction: column;

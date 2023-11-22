@@ -165,7 +165,6 @@ function EducationInputs({ school, onEducationDetailsChange }) {
 export function EducationDetailsCV({ education }) {
   return (
     <div className='educationListCV'>
-      <h3>Education</h3>
       {education.map((school) => (
         <SchoolDetailsCV key={school.key} school={school} />
       ))}
@@ -178,9 +177,9 @@ function SchoolDetailsCV({ school }) {
   if (!school.admin.displayOnCV) return
   return (
     <div className='schoolCV' key={school.key}>
-      <p className='schoolName'>
-        <b>{school.school}</b>
-      </p>
+      <h4 className='schoolName'>
+        {school.school}
+      </h4>
       <p className='schoolDateRange'>
         {school.start} - {school.end}
       </p>

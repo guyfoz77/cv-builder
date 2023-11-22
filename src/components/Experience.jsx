@@ -281,7 +281,6 @@ function PositionInputs({ onPositionDetailsChange, position }) {
 export function ExperienceDetailsCV({ experience }) {
   return (
     <div className='experienceListCV'>
-      <h3>Professional Experience</h3>
       {experience.map((company) => (
         <CompanyDetailsCV key={company.companyKey} company={company} />
       ))}
@@ -293,9 +292,9 @@ function CompanyDetailsCV({ company }) {
   if (!company.admin.displayOnCV) return
   return (
     <div className='companyCV' key={company.companyKey}>
-      <p className='companyName'>
-        <b>{company.company}</b>
-      </p>
+      <h4 className='companyName'>
+        {company.company}
+      </h4>
       <PositionListCV company={company} />
     </div>
   )
@@ -315,11 +314,11 @@ function PositionCV({ position }) {
   if (!position.admin.displayOnCV) return
   return (
     <div className='positionCardCV'>
-      <p>{position.position}</p>
-      <p>
+      <p className='positionTitle'><b>{position.position}</b></p>
+      <p className='positionDateRange'>
         {position.start} - {position.end}
       </p>
-      <p>{position.details}</p>
+      <p className='positionDetails'>{position.details}</p>
     </div>
   )
 }
