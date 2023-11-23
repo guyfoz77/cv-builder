@@ -4,6 +4,7 @@
 .CV {
   flex: 2;
   border: solid black;
+  align-self: flex-start;
 
   .personalDetailsCV {
     @include m.flexColumnGap;
@@ -86,7 +87,6 @@
           // grid-template-rows: auto auto;
           // gap: 5px;
           @include m.flexColumnGap(5);
-          border-left: solid v.$accent;
           padding-left: 5px;
 
           p {

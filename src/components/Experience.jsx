@@ -19,15 +19,18 @@ export function ExperienceInputContainer({
     }
     newCompanyList[indexToEdit] = editedCompany
     handleExperienceDetailsChange(newCompanyList)
-    console.log(newCompanyList)
   }
   function onExperienceCompanyClick(keyToEdit) {
-    const indexToEdit = experience.findIndex(
-      (company) => company.companyKey == keyToEdit
-    )
-    newCompanyList[indexToEdit].admin.editing =
-      !newCompanyList[indexToEdit].admin.editing
-    handleExperienceDetailsChange(newCompanyList)
+    const indexToEdit = newCompanyList.findIndex((company) => company.companyKey === keyToEdit);
+    const updatedCompanyList = newCompanyList.map((company) => ({ ...company }));
+    updatedCompanyList[indexToEdit] = {
+      ...updatedCompanyList[indexToEdit],
+      admin: {
+        ...updatedCompanyList[indexToEdit].admin,
+        editing: !updatedCompanyList[indexToEdit].admin.editing,
+      },
+    };
+    handleExperienceDetailsChange(updatedCompanyList)
   }
   function onExperienceCompanyDelete(keyToDelete) {
     if (!confirm('Are you sure you wish to delete?')) return
@@ -134,7 +137,6 @@ function CompanyInputs({
     newPosition.positionKey = uuid()
     const newPositionsList = [...company.positions]
     newPositionsList.push(newPosition)
-    console.log(newPositionsList)
     handlePositionDetailsChange(newPositionsList, company.companyKey)
   }
   return (
@@ -184,12 +186,16 @@ function PositionList({ positions, companyKey, handlePositionDetailsChange }) {
   }
 
   function onExperiencePositionClick(keyToEdit) {
-    const indexToEdit = positions.findIndex(
-      (position) => position.positionKey == keyToEdit
-    )
-    newPositionList[indexToEdit].admin.editing =
-      !newPositionList[indexToEdit].admin.editing
-    handlePositionDetailsChange(newPositionList, companyKey)
+    const indexToEdit = newPositionList.findIndex((position) => position.positionKey === keyToEdit);
+    const updatedPositionList = newPositionList.map((position) => ({ ...position }));
+    updatedPositionList[indexToEdit] = {
+      ...updatedPositionList[indexToEdit],
+      admin: {
+        ...updatedPositionList[indexToEdit].admin,
+        editing: !updatedPositionList[indexToEdit].admin.editing,
+      },
+    };
+    handlePositionDetailsChange(updatedPositionList, companyKey)
   }
   function onExperiencePositionDelete(keyToDelete) {
     const newPositionListDeleted = newPositionList.filter(
