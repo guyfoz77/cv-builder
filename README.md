@@ -1,3 +1,5 @@
 # CV builder
-### Using React
 
+Live preview:
+
+This app was built using react and sass.
