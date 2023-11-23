@@ -31,6 +31,15 @@ function GithubLinkContainer() {
   )
 }
 
+//bug: New schools are not updating after clearing the page of inputs.
+//      (first one edits fine)
+//    Very similar thing is happening with the companies
+// investigation suggests the problem lies with the code that adds new
+//schools or education. (2 items same key) (this may be fixed for eductaton)
+
+//bug: toggling visibilityu of new schools will toggle the visibility of all new schools
+
+
 function App() {
   const [personalDetails, setPersonalDetails] = useState(
     userInputData.personalDetails

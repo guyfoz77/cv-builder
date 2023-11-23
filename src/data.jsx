@@ -87,7 +87,7 @@ export const newSchoolTemplate = {
   start: '',
   end: '',
   details: '',
-  key: uuid(),
+  key: '',
   admin: { editing: true, displayOnCV: true },
 }
 
@@ -96,8 +96,7 @@ export const newCompanyTemplate = {
   companyKey: '',
   admin: { editing: true, displayOnCV: true },
   positions: [
-    //this initial position will need removing at some point
-    {
+        {
       position: 'initial position',
       start: '',
       end: '',

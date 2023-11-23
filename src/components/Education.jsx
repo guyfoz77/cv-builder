@@ -1,4 +1,5 @@
 import { userInputData, newSchoolTemplate } from '../data'
+import { v4 as uuid } from 'uuid'
 // import { useState } from 'react';
 
 export function EducationInputContainer({
@@ -33,10 +34,16 @@ export function EducationInputContainer({
     handleEducationDetailsChange(newSchoolList)
   }
   function handleEducationSchoolClick(keyToEdit) {
-    const indexToEdit = education.findIndex((school) => school.key == keyToEdit)
-    newSchoolList[indexToEdit].admin.editing =
-      !newSchoolList[indexToEdit].admin.editing
-    handleEducationDetailsChange(newSchoolList)
+    const indexToEdit = education.findIndex((school) => school.key === keyToEdit);
+    const updatedSchoolList = newSchoolList.map((school) => ({ ...school }));
+    updatedSchoolList[indexToEdit] = {
+      ...updatedSchoolList[indexToEdit],
+      admin: {
+        ...updatedSchoolList[indexToEdit].admin,
+        editing: !updatedSchoolList[indexToEdit].admin.editing,
+      },
+    };
+    handleEducationDetailsChange(updatedSchoolList);
   }
   function onEducationSchoolDelete(keyToDelete) {
     const newSchoolListDeleted = newSchoolList.filter(
@@ -53,7 +60,9 @@ export function EducationInputContainer({
     handleEducationDetailsChange(newSchoolList)
   }
   function addNewSchool() {
-    newSchoolList.push(newSchoolTemplate)
+    let newSchool = { ...newSchoolTemplate }
+    newSchool.key = uuid()
+    newSchoolList.push(newSchool)
     handleEducationDetailsChange(newSchoolList)
   }
 
