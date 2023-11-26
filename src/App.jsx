@@ -14,7 +14,7 @@ import {
   ExperienceDetailsCV,
 } from './components/Experience'
 
-import githubImage from '@/assets/github-mark.svg'
+import githubImage from './assets/github-mark.svg'
 
 function GithubLinkContainer() {
   return (
