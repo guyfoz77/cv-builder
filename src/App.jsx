@@ -14,6 +14,8 @@ import {
   ExperienceDetailsCV,
 } from './components/Experience'
 
+import githubImage from '@/assets/github-mark.svg'
+
 function GithubLinkContainer() {
   return (
     <a
@@ -22,7 +24,7 @@ function GithubLinkContainer() {
       target='_blank'
       rel='noreferrer'
     >
-      <img src='./src/assets/github-mark.svg' aria-description='github mark' />
+      <img src={githubImage} aria-description='github mark' />
 
       <p>
         <i>Made by Guy Foster</i>
